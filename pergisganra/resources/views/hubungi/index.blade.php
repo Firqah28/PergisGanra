@@ -3,7 +3,8 @@
 @section('title', 'Layanan Sekolah')
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
+<div class="px-6 md:px-12 py-16 bg-gray-50 min-h-screen">
+<div class="container mx-auto bg-gray-100 px-4 py-8">
     <div class="grid md:grid-cols-2 gap-8">
         <!-- Informasi Pendaftaran -->
         <div>
@@ -11,9 +12,8 @@
             <p class="mb-2">
                 Apakah Anda tertarik mendaftarkan anak Anda di <strong>MA Pergis Ganra</strong>? Tim kami siap membantu menjawab pertanyaan Anda dan mendampingi proses awal pendaftaran siswa.
             </p>
-            <p class="mb-1"><strong>Telepon:</strong> 031-21001716</p>
-            <p class="mb-1"><strong>WhatsApp:</strong> +62 822 9944 9600 (hanya chat)</p>
-            <p class="mb-1"><strong>Email:</strong> <a href="mailto:info-sc@sekolahciputra.sch.id" class="text-blue-600 underline">info-sc@Mapergisganra.sch.id</a></p>
+            <p class="mb-1"><strong>Telepon:</strong> 081 355 280 989</p>
+            <p class="mb-1"><strong>Email:</strong> <class="text-blue-600 underline>mapergis.ganra@gmail.com  </a></p>
             <p><strong>Jam Operasional:</strong> 07.30 – 16.00, Senin – Jumat</p>
         </div>
 
@@ -34,7 +34,7 @@
             <strong>MA Pergis Ganra</strong> terletak di kawasan yang nyaman dan tenang, cocok sebagai lingkungan belajar yang kondusif bagi siswa. Sekolah ini juga mudah diakses dan berada di lokasi strategis.
         </p>
         <p class="mb-1"><strong>Alamat:</strong><br>
-            Jl. Pendidikan
+            Jl.Pendidikan  Kec. Ganra Kab.Soppeng Sul – Sel 90861
         </p>
         <p><strong>Jam Operasional:</strong><br>
             07.30 – 16.00

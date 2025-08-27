@@ -29,8 +29,8 @@
 
       <!-- Kanan: Kontak + Login (desktop only) -->
       <div class="hidden md:flex items-center space-x-6 text-sm text-white">
-        <span><i class="fas fa-envelope mr-2"></i>pergisganra@gmail.com</span>
-        <span><i class="fas fa-phone mr-2"></i>0825-2525-2525</span>
+        <span><i class="fas fa-envelope mr-2"></i>mapergis.ganra@gmail.com  </span>
+        <span><i class="fas fa-phone mr-2"></i>081 355 280 989</span>
         <a href="{{ route('login') }}" class="bg-white p-3 rounded-full hover:bg-green-200 transition shadow">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />

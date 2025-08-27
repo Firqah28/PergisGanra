@@ -12,12 +12,12 @@
 
         <div class="mb-4">
             <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
-            <input type="text" name="nama" id="nama" class="mt-1 block w-full rounded border-gray-300" value="{{ old('nama', $guru->nama) }}" required>
+            <input type="text" name="nama" id="nama" class="mt-1 block w-full rounded border border-gray-400 focus:border-blue-500 focus:ring-blue-500" value="{{ old('nama', $guru->nama) }}" required>
         </div>
 
         <div class="mb-4">
             <label for="foto" class="block text-sm font-medium text-gray-700">Foto (Kosongkan jika tidak diganti)</label>
-            <input type="file" name="foto" id="foto" class="mt-1 block w-full border-gray-300 rounded">
+            <input type="file" name="foto" id="foto" class="mt-1 block w-full rounded border border-gray-400 focus:border-blue-500 focus:ring-blue-500">
             @if($guru->foto)
                 <img src="{{ asset('storage/guru/' . $guru->foto) }}" alt="{{ $guru->nama }}" class="w-24 h-24 mt-2 rounded-full">
             @endif
@@ -25,17 +25,17 @@
 
         <div class="mb-4">
             <label for="mata_pelajaran" class="block text-sm font-medium text-gray-700">Mata Pelajaran</label>
-            <input type="text" name="mata_pelajaran" id="mata_pelajaran" class="mt-1 block w-full rounded border-gray-300" value="{{ old('mata_pelajaran', $guru->mata_pelajaran) }}" required>
+            <input type="text" name="mata_pelajaran" id="mata_pelajaran" class="mt-1 block w-full rounded border border-gray-400 focus:border-blue-500 focus:ring-blue-500" value="{{ old('mata_pelajaran', $guru->mata_pelajaran) }}" required>
         </div>
 
         <div class="mb-4">
             <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
-            <textarea name="deskripsi" id="deskripsi" rows="3" class="mt-1 block w-full rounded border-gray-300">{{ old('deskripsi', $guru->deskripsi) }}</textarea>
+            <textarea name="deskripsi" id="deskripsi" rows="3" class="mt-1 block w-full rounded border border-gray-400 focus:border-blue-500 focus:ring-blue-500">{{ old('deskripsi', $guru->deskripsi) }}</textarea>
         </div>
 
         <div class="mb-4">
             <label for="prestasi" class="block text-sm font-medium text-gray-700">Prestasi (pisahkan dengan koma)</label>
-            <textarea name="prestasi" id="prestasi" rows="3" class="mt-1 block w-full rounded border-gray-300">{{ old('prestasi', $guru->prestasi) }}</textarea>
+            <textarea name="prestasi" id="prestasi" rows="3" class="mt-1 block w-full rounded border border-gray-400 focus:border-blue-500 focus:ring-blue-500">{{ old('prestasi', $guru->prestasi) }}</textarea>
         </div>
 
         <div class="flex justify-end">

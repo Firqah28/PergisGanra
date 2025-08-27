@@ -10,17 +10,16 @@
     <div class="mb-8">
         <h3 class="text-2xl font-semibold text-green-700 mb-2">Visi</h3>
         <p class="text-gray-700 text-lg">
-            Menjadi sekolah unggulan yang membentuk karakter dan prestasi siswa.
+            Terwujudnya kondisi kehidupan kemasyarakatan yang baik, maju, dan berakhlakul karimah sebagai hasil proses pendidikan  dan dakwah yang bernafaskan Islam.
         </p>
     </div>
 
     <!-- Misi -->
     <div>
         <h3 class="text-2xl font-semibold text-green-700 mb-2">Misi</h3>
-        <ul class="list-disc list-inside text-gray-700 text-lg space-y-1">
-            <li>Meningkatkan kualitas pembelajaran</li>
-            <li>Membangun lingkungan yang kondusif</li>
-            <li>Menanamkan nilai-nilai moral dan sosial</li>
+        <ul class="list-disc list-inside text-gray-700 text-lg space-y-1 ">
+            <li>Menyelenggarakan pendidikan IPTEK dan IMTAQ yang berdimensi keduniaan dan keakhiratan secara efektif, sistematis dan terencana</li>
+            <li>Menyelenggarakan pendidikan yang bermutu, adil dan merata di lingkungan sekolah.</li>
         </ul>
     </div>
 </div>
