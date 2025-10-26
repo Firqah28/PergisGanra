@@ -147,14 +147,15 @@
 </section>
 
 <!-- Modal -->
-<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+<div id="modal"
+     class="fixed inset-0 bg-black/50 justify-center items-center z-50 hidden">
     <div class="bg-white rounded-xl shadow-xl max-w-lg w-full p-6 animate-fade-in relative">
         <!-- Tombol close -->
         <button onclick="closeModal()" 
                 class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-xl font-bold">
-            ×
+        x
         </button>
-        
+
         <!-- Gambar -->
         <img id="modalImg" src="" alt="Foto" class="w-32 h-32 mx-auto rounded-full shadow-md mb-4">
 
@@ -299,6 +300,17 @@
         const subtitle = document.getElementById('modalSubtitle');
         const content = document.getElementById('modalContent');
 
+            // Tampilkan modal: hilangkan hidden, jadikan flex
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        document.addEventListener('click', (e) => {
+        const modal = document.getElementById('modal');
+        if (!modal.classList.contains('hidden') && e.target === modal) {
+        closeModal();
+        }
+    });
+
         if (role === 'kepsek') {
             img.src = "{{ asset('image/kepsek.jpg') }}";
             title.innerText = "H. Muh. Asaad, S.Pd.I.";
@@ -336,6 +348,7 @@
 
     function closeModal() {
         document.getElementById('modal').classList.add('hidden');
+        m.classList.add('hidden'); // sembunyikan lagi
     }
 </script>
 
