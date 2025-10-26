@@ -15,6 +15,9 @@
                 @if($item->tanggal_rilis)
                     {{ \Carbon\Carbon::parse($item->tanggal_rilis)->format('d M Y') }}
                 @endif
+                <p class="text-sm text-gray-500 mb-2">
+    {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+</p>
             </p>
             <p class="mt-2">{{ \Illuminate\Support\Str::limit($item->isi, 100) }}</p>
             <div class="flex gap-2 mt-2">

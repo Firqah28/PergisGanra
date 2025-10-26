@@ -23,9 +23,6 @@
             </div>
             <button type="submit" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300">Login</button>
         </form>
-        <p class="text-center mt-4 text-sm text-gray-600">
-            Belum punya akun? <a href="{{ route('register') }}" class="text-green-600 hover:underline">Daftar di sini</a>
-        </p>
     </div>
 </div>
 @endsection

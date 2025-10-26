@@ -9,7 +9,7 @@ class Berita extends Model
     protected $table = 'berita';
 
     protected $fillable = [
-        'judul', 'isi', 'gambar', 'penulis', 'tanggal_rilis'
+        'judul', 'isi', 'gambar', 'penulis', 'tanggal_rilis','sumber',
     ];
 
     protected $casts = [

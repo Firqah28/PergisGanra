@@ -7,31 +7,46 @@
 
         <div class="flex flex-col">
             <label for="judul" class="text-sm font-semibold text-gray-700">Judul</label>
-            <input type="text" name="judul" id="judul" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="text" name="judul" id="judul" required 
+                class="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500">
         </div>
 
         <div class="flex flex-col">
             <label for="isi" class="text-sm font-semibold text-gray-700">Isi</label>
-            <textarea name="isi" id="isi" required class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+            <textarea name="isi" id="isi" required rows="5"
+                class="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"></textarea>
         </div>
 
         <div class="flex flex-col">
             <label for="gambar" class="text-sm font-semibold text-gray-700">Gambar</label>
-            <input type="file" name="gambar" id="gambar" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="file" name="gambar" id="gambar" 
+                class="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500">
         </div>
 
         <div class="flex flex-col">
             <label for="penulis" class="text-sm font-semibold text-gray-700">Penulis</label>
-            <input type="text" name="penulis" id="penulis" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="text" name="penulis" id="penulis" 
+                class="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500">
         </div>
 
         <div class="flex flex-col">
             <label for="tanggal_rilis" class="text-sm font-semibold text-gray-700">Tanggal Rilis</label>
-            <input type="date" name="tanggal_rilis" id="tanggal_rilis" class="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="date" name="tanggal_rilis" id="tanggal_rilis" 
+                class="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500">
+        </div>
+
+        <!-- Tambahan input Link Sumber -->
+        <div class="flex flex-col">
+            <label for="sumber" class="text-sm font-semibold text-gray-700">Link Sumber</label>
+            <input type="url" name="sumber" id="sumber" placeholder="https://contoh.com" 
+                class="mt-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500">
         </div>
 
         <div class="mt-4">
-            <button type="submit" class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">Simpan</button>
+            <button type="submit" 
+                class="w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500">
+                Simpan
+            </button>
         </div>
     </form>
 </div>

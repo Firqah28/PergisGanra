@@ -17,27 +17,28 @@
   <div class="container mx-auto px-4 py-4">
 
     <!-- Bagian Atas: Logo + Nama Sekolah + Kontak (desktop) -->
-    <div class="flex justify-between items-center">
-      <!-- Kiri: Logo dan Nama -->
-      <div class="flex items-center space-x-4">
-        <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-12 h-12 object-contain">
-        <div>
-          <h1 class="text-2xl font-bold text-white">MA PERGIS GANRA</h1>
-          <p class="text-sm text-green-100">Madrasah Unggul, Berakhlak Mulia</p>
-        </div>
-      </div>
-
-      <!-- Kanan: Kontak + Login (desktop only) -->
-      <div class="hidden md:flex items-center space-x-6 text-sm text-white">
-        <span><i class="fas fa-envelope mr-2"></i>mapergis.ganra@gmail.com  </span>
-        <span><i class="fas fa-phone mr-2"></i>081 355 280 989</span>
-        <a href="{{ route('login') }}" class="bg-white p-3 rounded-full hover:bg-green-200 transition shadow">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />
-          </svg>
-        </a>
-      </div>
+<div class="flex justify-between items-center">
+  <!-- Kiri: Logo dan Nama -->
+  <div class="flex items-center space-x-4 pl-6 md:pl-12">
+    <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-12 h-12 object-contain">
+    <div>
+      <h1 class="text-2xl font-bold text-white">MA PERGIS GANRA</h1>
+      <p class="text-sm text-green-100">Madrasah Unggul, Berakhlak Mulia</p>
     </div>
+  </div>
+
+  <!-- Kanan: Kontak + Login (desktop only) -->
+  <div class="hidden md:flex items-center space-x-6 text-sm text-white pr-6 md:pr-12">
+    <span><i class="fas fa-envelope mr-2"></i>mapergis.ganra@gmail.com</span>
+    <span><i class="fas fa-phone mr-2"></i>081 355 280 989</span>
+    <a href="{{ route('login') }}" class="bg-white p-3 rounded-full hover:bg-green-200 transition shadow">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />
+      </svg>
+    </a>
+  </div>
+</div>
+
 
     <!-- Mobile: Menu dan Login -->
     <div class="md:hidden flex justify-between items-center mt-4">
@@ -60,7 +61,7 @@
 </header>
 
 <!-- Navigation -->
-<nav class="bg-white text-gray-800">
+<nav class="bg-white text-gray-800 md:pl-12">
   <div class="container mx-auto px-10">
     <ul class="hidden md:flex space-x-4 py-3 text-sm font-medium items-center">
       <li><a href="{{ url('/') }}" class="hover:text-green-600">Home</a></li>
@@ -79,7 +80,7 @@
 
       <li><a href="{{ url('/layanan') }}" class="hover:text-green-600">Layanan</a></li>
       <li><a href="{{ url('/mainberita') }}" class="hover:text-green-600">Berita</a></li>
-      <li><a href="{{ url('/galeri') }}" class="hover:text-green-600">Galeri</a></li>
+      <li><a href="{{ url('/maingaleri') }}" class="hover:text-green-600">Galeri</a></li>
       <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-green-600">Hubungi Kami</a></li>
     </ul>
 
@@ -91,32 +92,38 @@
           <summary class="cursor-pointer hover:text-green-600">Profil</summary>
           <ul class="ml-4 mt-1 space-y-1">
             <li><a href="{{ url('/profil/visi-misi') }}" class="block hover:text-green-600">Visi & Misi</a></li>
+            <li><a href="{{ url('/profil/sejarah') }}" class="block hover:text-green-600">Sejarah</a></li>
+            <li><a href="{{ url('/profil/identitas') }}" class="block hover:text-green-600">Identitas</a></li>
             <li><a href="{{ url('/profil/murid') }}" class="block hover:text-green-600">Siswa</a></li>
             <li><a href="{{ url('/profil/guru') }}" class="block hover:text-green-600">Guru</a></li>
           </ul>
         </details>
       </li>
       <li><a href="{{ url('/layanan') }}" class="hover:text-green-600">Layanan</a></li>
-      <li><a href="{{ url('/galeri') }}" class="hover:text-green-600">Galeri</a></li>
+      <li><a href="{{ url('/maingaleri') }}" class="hover:text-green-600">Galeri</a></li>
       <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-green-600">Hubungi Kami</a></li>
     </ul>
   </div>
 </nav>
 </header>
+<!-- Hero -->
+<div class="relative w-full">
+  <img src="/image/backround.jpg" alt="Hero Banner" 
+       class="w-full h-96 md:h-[500px] object-cover object-center"/>
 
-
-
-  <!-- Hero -->
-  <div class="relative">
-    <img src="/image/backround.jpg" alt="Hero Banner" class="w-full h-96 object-cover"/>
-    <div class="absolute inset-0 bg-green-900 bg-opacity-60 flex items-center">
-      <div class="container mx-auto px-6 text-white">
-        <h2 class="text-3xl md:text-4xl font-bold mb-2">INFORMASI SEKOLAH</h2>
-        <p class="text-lg mb-4">MA Perguruan Islam Ganra</p>
-        <a href="#" class="bg-white text-green-800 px-4 py-2 rounded shadow hover:bg-green-100 transition">Learn More</a>
-      </div>
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-green-900 bg-opacity-60 flex items-center">
+    <div class="container mx-auto px-6 md:px-12 text-left text-white">
+      <h2 class="text-3xl md:text-4xl font-bold mb-3">INFORMASI SEKOLAH</h2>
+      <p class="text-lg mb-6">MA Perguruan Islam Ganra</p>
+      <a href="{{ url('/profil/identitas') }}" 
+         class="bg-white text-green-800 px-5 py-2 rounded shadow hover:bg-green-100 transition">
+        Learn More
+      </a>
     </div>
   </div>
+</div>
+
 
   <!-- Quote -->
   <section class="bg-yellow-500 text-white text-center py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-500 ease-in-out">
@@ -125,83 +132,91 @@
   </p>
 </section>
 
-  <!-- Main Content -->
-  <main class="container mx-auto px-4 py-10 space-y-12">
-    <section class="px-4 py-10 bg-gray-50 rounded-lg shadow">
-      <h2 class="text-3xl font-bold text-center mb-10">KEGIATAN SEKOLAH</h2>
+<!-- Main Content -->
+<main class="container mx-auto px-4 py-16 space-y-20">
 
-      <!-- Kegiatan 1 -->
-      <div class="grid md:grid-cols-2 gap-6 items-center mb-12" data-aos="fade-up">
-        <img src="/image/pramuka.jpg" alt="Kegiatan Pramuka" class="rounded-lg shadow  w-full max-h-64 object-cover">
-        <div>
-          <h3 class="text-xl font-bold mb-2">KEGIATAN PRAMUKA</h3>
-          <p class="text-gray-700">
-            Kegiatan Pramuka di MA Pergis Ganra melatih siswa untuk menjadi disiplin, mandiri, serta cinta lingkungan.
-            Dengan kegiatan rutin dan perkemahan, siswa juga belajar kepemimpinan dan kerja sama tim.
-          </p>
-        </div>
+<!-- KEGIATAN SEKOLAH -->
+<section class="bg-gradient-to-brrelative bg-gradient-to-b from-green-50 to-gray-100 rounded-3xl shadow-xl p-10 overflow-x-hidden">
+  <h2 class="text-4xl font-extrabold text-center text-black mb-14 tracking-wide" data-aos="zoom-in">
+    KEGIATAN SEKOLAH
+  </h2>
+
+  <div class="space-y-20">
+    @forelse ($galeris as $galeri)
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+        @if($loop->iteration % 2 == 1)
+          <!-- Gambar di kiri -->
+          <div data-aos="fade-right" class="relative group overflow-hidden">
+            <img src="{{ asset('storage/' . $galeri->gambar) }}" 
+                 alt="{{ $galeri->judul }}" 
+                 class="w-full h-80 object-cover rounded-2xl shadow-lg transform transition duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-black bg-opacity-20 rounded-2xl opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+          <!-- Teks di kanan -->
+          <div data-aos="fade-left" class="space-y-4">
+            <h3 class="text-2xl font-bold text-green-800">{{ $galeri->judul }}</h3>
+            @if($galeri->deskripsi)
+              <p class="text-gray-700 text-lg leading-relaxed">
+                {{ $galeri->deskripsi }}
+              </p>
+            @endif
+          </div>
+        @else
+          <!-- Teks di kiri -->
+          <div class="order-2 md:order-1 space-y-4" data-aos="fade-right">
+            <h3 class="text-2xl font-bold text-green-800">{{ $galeri->judul }}</h3>
+            @if($galeri->deskripsi)
+              <p class="text-gray-700 text-lg leading-relaxed">
+                {{ $galeri->deskripsi }}
+              </p>
+            @endif
+          </div>
+          <!-- Gambar di kanan -->
+          <div class="order-1 md:order-2 relative group overflow-hidden" data-aos="fade-left">
+            <img src="{{ asset('storage/' . $galeri->gambar) }}" 
+                 alt="{{ $galeri->judul }}" 
+                 class="w-full h-80 object-cover rounded-2xl shadow-lg transform transition duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-black bg-opacity-20 rounded-2xl opacity-0 group-hover:opacity-100 transition"></div>
+          </div>
+        @endif
+
       </div>
-
-      <!-- Kegiatan 2 -->
-      <div class="grid md:grid-cols-2 gap-6 items-center mb-12" data-aos="zoom-in">
-        <div class="md:order-2">
-          <img src="/image/apel.jpg" alt="Kegiatan Kartini" class="rounded-lg shadow h-64 w-full object-cover">
-        </div>
-        <div class="md:order-1">
-          <h3 class="text-xl font-bold mb-2">APEL</h3>
-          <p class="text-gray-700">
-            “Kartini adalah kita—yang terus belajar, berdaya, dan berkarya.” Hari Kartini bukan cuma soal mengenang,
-            tapi meneruskan mimpi, semangat, dan keberanian jadi diri sendiri.
-          </p>
-        </div>
-      </div>
-
-      <!-- Kegiatan 3 -->
-      <div class="grid md:grid-cols-2 gap-6 items-center mb-12" data-aos="fade-up">
-        <img src="/image/pmr.jpg" alt="Kegiatan Pramuka" class="rounded-lg shadow h-64 w-full object-cover">
-        <div>
-          <h3 class="text-xl font-bold mb-2">KEGIATAN PRAMUKA</h3>
-          <p class="text-gray-700">
-            Kegiatan Pramuka di MA Pergis Ganra melatih siswa untuk menjadi disiplin, mandiri, serta cinta lingkungan.
-            Dengan kegiatan rutin dan perkemahan, siswa juga belajar kepemimpinan dan kerja sama tim.
-          </p>
-        </div>
-      </div>
-
-      <!-- Kegiatan 4 -->
-      <div class="grid md:grid-cols-2 gap-6 items-center mb-12" data-aos="zoom-in">
-        <div class="md:order-2">
-          <img src="/image/pengajian.jpg" alt="Kegiatan Kartini" class="rounded-lg shadow h-64 w-full object-cover">
-        </div>
-        <div class="md:order-1">
-          <h3 class="text-xl font-bold mb-2">PENGAJIAN</h3>
-          <p class="text-gray-700">
-            “Kartini adalah kita—yang terus belajar, berdaya, dan berkarya.” Hari Kartini bukan cuma soal mengenang,
-            tapi meneruskan mimpi, semangat, dan keberanian jadi diri sendiri.
-          </p>
-        </div>
-      </div>
-
-      <section class="bg-white py-10 rounded-lg shadow" data-aos="fade-up">
-  <h2 class="text-3xl font-bold text-center mb-10">BERITA TERBARU</h2>
-
-  <div class="grid md:grid-cols-3 gap-8">
-    @foreach ($berita as $item)
-      <div class="bg-gray-100 rounded-lg overflow-hidden shadow">
-        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="w-full h-48 object-cover">
-        <div class="p-4">
-          <h3 class="font-bold text-lg mb-2">{{ $item->judul }}</h3>
-          <p class="text-sm text-gray-600 mb-2">{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</p>
-          <p class="text-gray-700 mb-4">{{ Str::limit($item->isi, 100) }}</p>
-          <a href="{{ route('mainberita', $item->id) }}" class="text-green-700 hover:underline font-medium">Baca Selengkapnya</a>
-        </div>
-      </div>
-    @endforeach
+    @empty
+      <p class="text-gray-600 text-center text-lg">Belum ada kegiatan yang ditampilkan.</p>
+    @endforelse
   </div>
 </section>
-      
-    </section>
-  </main>
+
+
+  <!-- BERITA TERBARU -->
+  <section>
+    <h2 class="text-4xl font-extrabold text-center text-black mb-14 tracking-wide" data-aos="zoom-in">
+      BERITA TERBARU
+    </h2>
+
+    <div class="bg-gradient-to-brrelative bg-gradient-to-b from-green-50 to-gray-200 grid md:grid-cols-3 gap-10">
+      @foreach ($berita as $item)
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-500" data-aos="fade-up">
+          <img src="{{ asset('storage/' . $item->gambar) }}" 
+               alt="{{ $item->judul }}" 
+               class="w-full h-52 object-cover">
+          <div class="p-6">
+            <h3 class="font-bold text-xl mb-2 text-gray-900">{{ $item->judul }}</h3>
+            <p class="text-sm text-gray-500 mb-2">
+              {{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}
+            </p>
+            <p class="text-gray-700 mb-4">{{ Str::limit($item->isi, 120) }}</p>
+            <a href="{{ route('mainberita', $item->id) }}" 
+               class="inline-block text-green-700 hover:text-green-900 font-semibold transition">
+              Baca Selengkapnya →
+            </a>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </section>
+</main>
 
 <!-- Sidebar -->
 <aside class="bg-white p-6 rounded-2xl shadow-md space-y-4">
@@ -238,10 +253,10 @@
 
       <!-- Ikon Media Sosial -->
       <div class="flex space-x-4 mt-2">
-        <a href="https://instagram.com" target="_blank">
+        <a href="https://www.instagram.com/ganramapergis/" target="_blank">
           <i class="fab fa-instagram text-xl hover:text-pink-500"></i>
         </a>
-        <a href="https://youtube.com" target="_blank">
+        <a href="https://www.youtube.com/@pondokpesantrenperguruanis2669" target="_blank">
           <i class="fab fa-youtube text-xl hover:text-red-600"></i>
         </a>
         <a href="mailto:pergisganra@gmail.com">
@@ -260,7 +275,7 @@
         <ul class="space-y-2 text-sm ml-8">
           <li><a href="{{ url('/') }}" class="hover:underline">Home</a></li>
           <li><a href="{{ url('/profil/visi-misi') }}" class="hover:underline">Profil</a></li>
-          <li><a href="{{ url('/galeri') }}" class="hover:underline">Galeri</a></li>
+          <li><a href="{{ url('/maingaleri') }}" class="hover:underline">Galeri</a></li>
           <li><a href="{{ url('/layanan') }}" class="hover:underline">Layanan</a></li>
           <li><a href="{{ url('/hubungi-kami') }}" class="hover:underline">Hubungi Kami</a></li>
         </ul>
@@ -281,6 +296,7 @@
       © 2025 MA Pergis Ganra. All rights reserved.
     </div>
   </footer>
+
 
 
   <!-- Script -->

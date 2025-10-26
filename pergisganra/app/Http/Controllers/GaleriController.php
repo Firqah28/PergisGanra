@@ -107,4 +107,5 @@ class GaleriController extends Controller
 
         return redirect()->route('galeri.index')->with('success', 'Gambar berhasil dihapus!');
     }
+
 }

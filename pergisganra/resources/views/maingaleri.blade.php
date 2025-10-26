@@ -3,7 +3,7 @@
 @section('title', 'Galeri Sekolah')
 
 @section('content')
-<div class="min-h-screen bg-gray-100 py-10 px-6">
+<div class="min-h-screen bg-gradient-to-b from-green-100 to-gray-200 bg-gray-100 py-10 px-6">
     <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Galeri Sekolah</h2>
 

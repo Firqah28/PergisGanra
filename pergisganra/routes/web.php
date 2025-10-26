@@ -11,6 +11,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\IdentitasController;
 use App\Models\Galeri;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GaleriController;
 
 /*
@@ -27,6 +28,8 @@ Route::get('/profil/murid', [SiswaController::class, 'index'])->name('murid.inde
 Route::get('/profil/guru', [GuruController::class, 'index'])->name('guru.index');
 Route::get('/profil/guru', [GuruController::class, 'showGuruUntukUser'])->name('profil.guru');
 Route::get('/mainberita', [BeritaController::class, 'main'])->name('mainberita');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 
 Route::view('/layanan', 'layanan.index');
 Route::view('/galeri', 'galeri.index');

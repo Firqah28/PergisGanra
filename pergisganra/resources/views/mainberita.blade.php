@@ -3,7 +3,7 @@
 @section('title', 'Berita MA Pergis Ganra')
 
 @section('content')
-<div class="px-6 md:px-12 py-16 bg-gray-50 min-h-screen">
+<div class="px-6 md:px-12 py-16 bg-gradient-to-b from-green-100 to-gray-200 bg-gray-50 min-h-screen">
     <div class="mb-14 text-center">
         <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4">Berita Terbaru</h2>
         <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto">Selalu update berita dan informasi seputar MA Pergis Ganra.</p>
@@ -25,16 +25,17 @@
                         {!! Str::limit(strip_tags($berita->isi), 200, '...') !!}
                     </div>
                     <div class="mt-4">
-                        <a href="#" class="inline-block text-green-600 font-semibold hover:underline text-sm">Baca Selengkapnya</a>
+                        @if($berita->sumber)
+                            <a href="{{ $berita->sumber }}" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="inline-block bg-green-600 text-white px-4 py-2 rounded-lg shadow hover:bg-green-700 transition">
+                                Baca Selengkapnya
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
-
-    <!-- Pagination kalau ada -->
-    <div class="mt-12">
-        {{ $beritas->links() }}
-    </div>
-</div>
 @endsection

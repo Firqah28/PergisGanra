@@ -41,6 +41,13 @@
                    class="w-full border px-4 py-2 rounded">
         </div>
 
+        <!-- Sumber -->
+        <div>
+            <label for="sumber" class="block text-gray-700 font-medium">Sumber</label>
+            <input type="text" id="sumber" name="sumber" value="{{ old('sumber', $berita->sumber) }}"
+                   class="w-full border px-4 py-2 rounded">
+        </div>
+
         <!-- Tanggal Rilis -->
         <div>
             <label for="tanggal_rilis" class="block text-gray-700 font-medium">Tanggal Rilis</label>

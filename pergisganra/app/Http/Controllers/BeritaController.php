@@ -41,6 +41,7 @@ class BeritaController extends Controller
             'judul' => 'required|max:255',
             'isi' => 'required',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'sumber' => 'nullable|url', // 👈 tambahan validasi sumber
         ]);
 
         // Menangani upload gambar jika ada
@@ -56,6 +57,7 @@ class BeritaController extends Controller
             'gambar' => $gambar,
             'penulis' => $request->penulis,
             'tanggal_rilis' => $request->tanggal_rilis,
+            'sumber' => $request->sumber, // 👈 tambahkan ini
         ]);
 
         // Redirect ke halaman daftar berita dengan pesan sukses
@@ -79,6 +81,7 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required|max:255',
             'isi' => 'required',
+            'sumber' => 'nullable|url', // 👈 tambahan validasi sumber
         ]);
 
         $berita = Berita::findOrFail($id);
@@ -101,6 +104,7 @@ class BeritaController extends Controller
             'gambar' => $gambar,
             'penulis' => $request->penulis,
             'tanggal_rilis' => $request->tanggal_rilis,
+            'sumber' => $request->sumber, // 👈 tambahkan ini
         ]);
 
         // Redirect ke halaman daftar berita dengan pesan sukses
