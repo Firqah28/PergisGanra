@@ -1,213 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MA PERGIS GANRA</title>
+  <title>@yield('title', 'MA PERGIS GANRA')</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{{ asset('image/logo1.png') }}" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+  </style>
 </head>
-<body>
-<!-- Header dan Navigation Gabungan -->
-<header class="bg-green-800 text-white sticky top-0 z-50 shadow-md">
-  <div class="container mx-auto px-4 py-4">
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-yellow-200 selection:text-green-900 flex flex-col min-h-screen">
 
-    <!-- Bagian Atas: Logo + Nama Sekolah + Kontak (desktop) -->
-<div class="flex justify-between items-center">
-  <!-- Kiri: Logo dan Nama -->
-  <div class="flex items-center space-x-4 pl-6 md:pl-12">
-    <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-12 h-12 object-contain">
-    <div>
-      <h1 class="text-2xl font-bold text-white">MA PERGIS GANRA</h1>
-      <p class="text-sm text-green-100">Madrasah Unggul, Berakhlak Mulia</p>
-    </div>
-  </div>
-
-  <!-- Kanan: Kontak + Login (desktop only) -->
-  <div class="hidden md:flex items-center space-x-6 text-sm text-white pr-6 md:pr-12">
-    <span><i class="fas fa-envelope mr-2"></i>mapergis.ganra@gmail.com</span>
-    <span><i class="fas fa-phone mr-2"></i>081 355 280 989</span>
-    <a href="{{ route('login') }}" class="bg-white p-3 rounded-full hover:bg-green-200 transition shadow">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />
-      </svg>
+<!-- Main Header (Logo & Branding) -->
+<header class="bg-green-800 text-white shadow-md border-b border-green-700 sticky top-0 z-40 md:static md:z-auto">
+  <div class="container mx-auto px-4 py-3 md:py-5 flex justify-between items-center">
+    <!-- Logo & Nama Sekolah -->
+    <a href="{{ url('/') }}" class="flex items-center space-x-3 md:space-x-4 hover:opacity-90 transition">
+      <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-10 h-10 md:w-14 md:h-14 object-contain">
+      <div>
+        <h1 class="text-lg md:text-2xl font-bold tracking-tight leading-tight">MA PERGIS GANRA</h1>
+        <p class="text-xs text-green-100 font-medium tracking-wide hidden md:block">MADRASAH ALIYAH PERGURUAN ISLAM GANRA</p>
+      </div>
     </a>
-  </div>
-</div>
 
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="md:hidden text-white focus:outline-none p-2 rounded hover:bg-green-700">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
 
-    <!-- Mobile: Menu dan Login -->
-    <div class="md:hidden flex justify-between items-center mt-4">
-      <!-- Tombol Menu -->
-      <button id="menu-toggle">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-      <!-- Tombol Login -->
-      <a href="{{ route('login') }}" class="bg-white p-2 rounded-full hover:bg-green-200 transition shadow">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />
-        </svg>
-      </a>
+    <!-- Desktop Action Button (Dynamic Login/Logout) -->
+    <div class="hidden md:block">
+      @auth
+        <form action="{{ route('logout') }}" method="POST" class="inline">
+          @csrf
+          <button type="submit" class="bg-red-600 hover:bg-red-500 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow hover:shadow-md transition transform hover:-translate-y-0.5 flex items-center">
+            <i class="fas fa-sign-out-alt mr-2 text-lg"></i> Keluar Portal
+          </button>
+        </form>
+      @else
+        <a href="{{ route('login') }}" class="bg-yellow-500 hover:bg-yellow-400 text-green-900 px-6 py-2.5 rounded-full font-bold text-sm shadow hover:shadow-md transition transform hover:-translate-y-0.5 flex items-center">
+          <i class="fas fa-user-circle mr-2 text-lg"></i> Login Portal
+        </a>
+      @endauth
     </div>
-
   </div>
 </header>
 
-
- <!-- Navigation -->
-<nav class="bg-white text-gray-800 md:pl-12">
-  <div class="container mx-auto px-10">
-    <ul class="hidden md:flex space-x-4 py-3 text-sm font-medium items-center">
-      <li><a href="{{ url('/') }}" class="hover:text-green-600">Home</a></li>
-
+<!-- Navigation Bar (Sticky on Desktop) -->
+<nav class="bg-green-800 text-white shadow-lg sticky top-0 z-50 hidden md:block border-t border-green-700">
+  <div class="container mx-auto px-4">
+    <ul class="flex justify-center space-x-1 lg:space-x-2 text-sm font-semibold tracking-wide">
+      <li><a href="{{ url('/') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400 {{ request()->is('/') ? 'bg-green-700 border-yellow-400' : '' }}">BERANDA</a></li>
+      
       <!-- Dropdown Profil -->
       <li class="relative">
-        <button onclick="toggleDropdown()" class="hover:text-green-600 text-sm font-medium">Profil</button>
-        <ul id="dropdown-profil" class="absolute left-0 top-full mt-3 bg-white border border-gray-200 shadow-lg rounded-md hidden min-w-[160px] z-50">
-          <li><a href="{{ url('/profil/visi-misi') }}" class="block px-4 py-2 hover:bg-green-100  whitespace-nowrap">Visi & Misi</a></li>
-          <li><a href="{{ url('/profil/sejarah') }}" class="block px-4 py-2 hover:bg-green-100  whitespace-nowrap">Sejarah</a></li>
-          <li><a href="{{ url('/profil/identitas') }}" class="block px-4 py-2 hover:bg-green-100">Identitas</a></li>
-          <li><a href="{{ url('/profil/murid') }}" class="block px-4 py-2 hover:bg-green-100">Siswa</a></li>
-          <li><a href="{{ url('/profil/guru') }}" class="block px-4 py-2 hover:bg-green-100">Guru</a></li>
-        </ul>
+        <button onclick="toggleDropdown()" class="flex items-center px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400 focus:outline-none">
+          PROFIL <i class="fas fa-chevron-down ml-1.5 text-xs text-green-200"></i>
+        </button>
+        <div id="dropdown-profil" class="absolute left-0 top-full w-56 bg-white text-gray-800 shadow-xl rounded-b-lg overflow-hidden hidden border-t-2 border-yellow-500 transform origin-top transition-transform duration-200 z-50">
+          <a href="{{ url('/profil/visi-misi') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Visi & Misi</a>
+          <a href="{{ url('/profil/sejarah') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Sejarah Singkat</a>
+          <a href="{{ url('/profil/identitas') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Identitas Madrasah</a>
+          <a href="{{ url('/profil/murid') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Data Siswa</a>
+          <a href="{{ url('/profil/guru') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 transition">Dewan Guru</a>
+        </div>
       </li>
 
-      <li><a href="{{ url('/layanan') }}" class="hover:text-green-600">Layanan</a></li>
-      <li><a href="{{ url('/mainberita') }}" class="hover:text-green-600">Berita</a></li>
-      <li><a href="{{ url('/maingaleri') }}" class="hover:text-green-600">Galeri</a></li>
-      <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-green-600">Hubungi Kami</a></li>
-    </ul>
-
-    <!-- Mobile Navigation -->
-    <!-- Mobile Navigation -->
-    <ul id="mobile-nav" class="md:hidden hidden flex-col py-4 space-y-2 text-sm font-medium">
-      <li><a href="{{ url('/') }}" class="hover:text-green-600">Home</a></li>
-      <li>
-        <details class="group">
-          <summary class="cursor-pointer hover:text-green-600">Profil</summary>
-          <ul class="ml-4 mt-1 space-y-1">
-            <li><a href="{{ url('/profil/visi-misi') }}" class="block hover:text-green-600">Visi & Misi</a></li>
-            <li><a href="{{ url('/profil/sejarah') }}" class="block hover:text-green-600">Sejarah</a></li>
-            <li><a href="{{ url('/profil/identitas') }}" class="block hover:text-green-600">Identitas</a></li>
-            <li><a href="{{ url('/profil/murid') }}" class="block hover:text-green-600">Siswa</a></li>
-            <li><a href="{{ url('/profil/guru') }}" class="block hover:text-green-600">Guru</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a href="{{ url('/layanan') }}" class="hover:text-green-600">Layanan</a></li>
-      <li><a href="{{ url('/maingaleri') }}" class="hover:text-green-600">Galeri</a></li>
-      <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-green-600">Hubungi Kami</a></li>
+      <li><a href="{{ url('/layanan') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">LAYANAN</a></li>
+      <li><a href="{{ url('/mainberita') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">BERITA</a></li>
+      <li><a href="{{ url('/maingaleri') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">GALERI KEGIATAN</a></li>
+      <li><a href="{{ url('/hubungi-kami') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">HUBUNGI KAMI</a></li>
     </ul>
   </div>
 </nav>
-</header>
 
-    <main>
-        @yield('content')
-    </main>
-
-  <footer class="bg-green-800 text-white py-10">
-    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-
-    <div class="flex items-center space-x-4">
-    <!-- Logo -->
-    <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-28 h-28 object-contain">
-
-    <!-- Teks & Sosial Media -->
+<!-- Mobile Navigation (Hidden by default) -->
+<nav id="mobile-nav" class="fixed inset-0 z-50 bg-green-900 bg-opacity-95 filter backdrop-blur-md text-white transform translate-x-full transition-transform duration-500 md:hidden flex flex-col pt-24 px-6 overflow-y-auto">
+  <!-- Close Button -->
+  <button id="close-menu" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white bg-opacity-10 text-white hover:bg-yellow-500 hover:text-green-900 transition-all border border-white border-opacity-10">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  
+  <!-- Mobile Logo Header -->
+  <div class="flex items-center space-x-4 mb-10 pb-8 border-b border-white border-opacity-5">
+    <img src="{{ asset('image/logo1.png') }}" alt="Logo" class="w-16 h-16 object-contain">
     <div>
-      <h1 class="text-2xl font-bold">MA PERGIS GANRA</h1>
-      <p class="text-sm text-green-100">Madrasah Unggul, Berakhlak Mulia</p>
+      <h3 class="font-black text-xl leading-tight">MA PERGIS<br><span class="text-yellow-400">GANRA</span></h3>
+    </div>
+  </div>
+  
+  <div class="flex flex-col space-y-1">
+    <a href="{{ url('/') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>BERANDA</span>
+      <i class="fas fa-home text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    
+    <!-- Profil Submenu Container -->
+    <div class="w-full">
+      <button onclick="document.getElementById('mobile-submenu').classList.toggle('hidden'); this.querySelector('.fa-chevron-right').classList.toggle('rotate-90')" 
+              class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors w-full focus:outline-none">
+        <span>PROFIL MADRASAH</span>
+        <i class="fas fa-chevron-right text-xs opacity-30 group-hover:opacity-100 transition-all"></i>
+      </button>
+      <div id="mobile-submenu" class="hidden flex flex-col space-y-0.5 bg-green-950/50 rounded-xl mt-2 overflow-hidden border border-white border-opacity-5">
+        <a href="{{ url('/profil/visi-misi') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Visi & Misi</a>
+        <a href="{{ url('/profil/sejarah') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Sejarah Singkat</a>
+        <a href="{{ url('/profil/identitas') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Identitas & Struktur</a>
+        <a href="{{ url('/profil/murid') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Informasi Siswa</a>
+        <a href="{{ url('/profil/guru') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors">Tenaga Pendidik</a>
+      </div>
+    </div>
 
-      <!-- Ikon Media Sosial -->
-      <div class="flex space-x-4 mt-2">
-        <a href="https://www.instagram.com/ganramapergis/" target="_blank">
-          <i class="fab fa-instagram text-xl hover:text-pink-500"></i>
+    <a href="{{ url('/layanan') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>LAYANAN</span>
+      <i class="fas fa-hands-holding-child text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    <a href="{{ url('/mainberita') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>BERITA TERBARU</span>
+      <i class="fas fa-newspaper text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    <a href="{{ url('/maingaleri') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>GALERI KEGIATAN</span>
+      <i class="fas fa-images text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    <a href="{{ url('/hubungi-kami') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>HUBUNGI KAMI</span>
+      <i class="fas fa-headset text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+  </div>
+
+  <!-- Mobile Action (Auth) -->
+  <div class="mt-8 mb-20">
+    @auth
+      <div class="bg-white bg-opacity-5 p-5 rounded-2xl border border-white border-opacity-10 mb-4">
+        <p class="text-[9px] text-green-400 uppercase font-black tracking-widest mb-1">Status Login</p>
+        <p class="text-base font-bold truncate">{{ Auth::user()->name }}</p>
+      </div>
+      <form action="{{ route('logout') }}" method="POST" class="block">
+        @csrf
+        <button type="submit" class="w-full bg-red-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-xl hover:bg-red-500 transition-all flex items-center justify-center space-x-3">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>KELUAR PORTAL</span>
+        </button>
+      </form>
+    @else
+      <a href="{{ route('login') }}" class="w-full bg-yellow-500 text-green-950 px-8 py-4 rounded-2xl font-black text-base shadow-xl hover:bg-yellow-400 transition-all flex items-center justify-center space-x-3">
+        <i class="fas fa-user-circle"></i>
+        <span>LOGIN PORTAL</span>
+      </a>
+    @endauth
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow">
+    @yield('content')
+</main>
+
+<!-- Footer -->
+<footer class="bg-green-900 text-white pt-16 pb-8 mt-auto border-t-4 border-yellow-500">
+  <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+
+    <!-- Kolom 1: Identitas -->
+    <div class="space-y-6">
+      <div class="flex items-center space-x-4">
+        <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-20 h-20 object-contain drop-shadow-md brightness-110">
+        <div>
+          <h1 class="text-xl font-bold tracking-wider text-white">MA PERGIS GANRA</h1>
+          <p class="text-sm text-green-200">Mewujudkan Generasi Islami Berprestasi</p>
+        </div>
+      </div>
+      <p class="text-green-100/80 text-sm leading-relaxed pr-4">
+        Kami berkomitmen untuk memberikan pendidikan berkualitas dengan memadukan ilmu pengetahuan umum dan nilai-nilai keislaman yang kuat.
+      </p>
+      <div class="flex space-x-3 pt-2">
+        <a href="https://www.instagram.com/ganramapergis/" target="_blank" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center hover:bg-pink-600 transition shadow-lg">
+          <i class="fab fa-instagram text-lg"></i>
         </a>
-        <a href="https://www.youtube.com/@pondokpesantrenperguruanis2669" target="_blank">
-          <i class="fab fa-youtube text-xl hover:text-red-600"></i>
+        <a href="https://www.youtube.com/@pondokpesantrenperguruanis2669" target="_blank" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center hover:bg-red-600 transition shadow-lg">
+          <i class="fab fa-youtube text-lg"></i>
         </a>
-        <a href="mailto:pergisganra@gmail.com">
-          <i class="fas fa-envelope text-xl hover:text-green-300"></i>
+        <a href="mailto:pergisganra@gmail.com" class="w-10 h-10 rounded-full bg-green-800 flex items-center justify-center hover:bg-yellow-500 hover:text-green-900 transition shadow-lg">
+          <i class="fas fa-envelope text-lg"></i>
         </a>
       </div>
+    </div>
+    
+    <!-- Kolom 2: Navigasi -->
+    <div class="md:pl-10">
+      <h2 class="text-lg font-bold mb-6 text-white border-b border-green-700 pb-2 inline-block">Navigasi Utama</h2>
+      <ul class="space-y-3 text-sm text-green-100">
+        <li><a href="{{ url('/') }}" class="hover:text-yellow-400 hover:translate-x-1 transition flex items-center"><i class="fas fa-caret-right mr-2 text-yellow-500"></i> Home</a></li>
+        <li><a href="{{ url('/profil/visi-misi') }}" class="hover:text-yellow-400 hover:translate-x-1 transition flex items-center"><i class="fas fa-caret-right mr-2 text-yellow-500"></i> Profil</a></li>
+        <li><a href="{{ url('/maingaleri') }}" class="hover:text-yellow-400 hover:translate-x-1 transition flex items-center"><i class="fas fa-caret-right mr-2 text-yellow-500"></i> Galeri</a></li>
+        <li><a href="{{ url('/layanan') }}" class="hover:text-yellow-400 hover:translate-x-1 transition flex items-center"><i class="fas fa-caret-right mr-2 text-yellow-500"></i> Layanan</a></li>
+        <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-yellow-400 hover:translate-x-1 transition flex items-center"><i class="fas fa-caret-right mr-2 text-yellow-500"></i> Hubungi Kami</a></li>
+      </ul>
+    </div>
+
+    <!-- Kolom 3: Kontak -->
+    <div>
+      <h2 class="text-lg font-bold mb-6 text-white border-b border-green-700 pb-2 inline-block">Kontak Kami</h2>
+      <ul class="text-sm space-y-4 text-green-100">
+        <li class="flex items-start group">
+          <div class="mt-1 mr-3 w-8 h-8 rounded-full bg-green-800 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-500 group-hover:text-green-900 transition">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <span>Ganra, Soppeng, Sulawesi Selatan<br>Indonesia</span>
+        </li>
+        <li class="flex items-center group">
+          <div class="mr-3 w-8 h-8 rounded-full bg-green-800 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-500 group-hover:text-green-900 transition">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <span>pergisganra@gmail.com</span>
+        </li>
+        <li class="flex items-center group">
+           <div class="mr-3 w-8 h-8 rounded-full bg-green-800 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-500 group-hover:text-green-900 transition">
+            <i class="fas fa-phone"></i>
+          </div>
+          <span>0825-2525-2525</span>
+        </li>
+      </ul>
     </div>
   </div>
 
-      
-      <!-- Bagian Kiri: Deskripsi -->
+  <div class="border-t border-green-800 pt-8 mt-4 text-center">
+    <p class="text-green-300 text-sm">
+      &copy; 2025 <span class="text-white font-semibold">MA Pergis Ganra</span>. All rights reserved.
+    </p>
+  </div>
+</footer>
 
-      <!-- Bagian Tengah: Navigasi -->
-      <div>
-        <h2 class="text-lg font-semibold mb-3 ml-8">Navigasi</h2>
-        <ul class="space-y-2 text-sm ml-8">
-          <li><a href="{{ url('/') }}" class="hover:underline">Home</a></li>
-          <li><a href="{{ url('/profil/visi-misi') }}" class="hover:underline">Profil</a></li>
-          <li><a href="{{ url('/maingaleri') }}" class="hover:underline">Galeri</a></li>
-          <li><a href="{{ url('/layanan') }}" class="hover:underline">Layanan</a></li>
-          <li><a href="{{ url('/hubungi-kami') }}" class="hover:underline">Hubungi Kami</a></li>
-        </ul>
-      </div>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init();
 
-      <!-- Bagian Kanan: Kontak -->
-      <div>
-        <h2 class="text-lg font-semibold mb-3">Kontak Kami</h2>
-        <ul class="text-sm space-y-2">
-          <li><i class="fas fa-envelope mr-2"></i>mapergis.ganra@gmail.com</li>
-          <li><i class="fas fa-phone mr-2"></i>081 355 280 989</li>
-          <li><i class="fas fa-map-marker-alt mr-2"></i>Ganra, Soppeng, Sulawesi Selatan</li>
-        </ul>
-      </div>
-    </div>
+  const menuBtn = document.getElementById('menu-toggle');
+  const closeBtn = document.getElementById('close-menu');
+  const mobileNav = document.getElementById('mobile-nav');
 
-    <div class="border-t border-green-700 mt-10 pt-4 text-center text-sm text-green-100">
-      © 2025 MA Pergis Ganra. All rights reserved.
-    </div>
-  </footer>
+  function toggleMenu() {
+    mobileNav.classList.toggle('translate-x-full');
+    document.body.classList.toggle('overflow-hidden');
+  }
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
+  if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+  if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
 
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('mobile-nav');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('hidden');
-    });
-
-    function toggleDropdown() {
-      const dropdown = document.getElementById('dropdown-profil');
-      dropdown.classList.toggle('hidden');
-    }
-
-    document.addEventListener('click', function (e) {
-      const btn = e.target.closest('button');
-      const dropdown = document.getElementById('dropdown-profil');
-      if (!e.target.closest('li') || (btn && !btn.onclick)) {
-        if (!e.target.closest('#dropdown-profil')) {
-          dropdown?.classList?.add('hidden');
-        }
-      }
-    });
-
-    function toggleDropdown() {
+  // Desktop Dropdown Logic
+  function toggleDropdown() {
     const dropdown = document.getElementById('dropdown-profil');
     dropdown.classList.toggle('hidden');
   }
 
-  // Optional: klik di luar dropdown untuk menutup
-  window.addEventListener('click', function(e) {
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
     const dropdown = document.getElementById('dropdown-profil');
-    const button = document.querySelector('button[onclick="toggleDropdown()"]');
-    if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.add('hidden');
+    const toggleBtn = document.querySelector('button[onclick="toggleDropdown()"]');
+    
+    // Check if dropdown is open
+    if (dropdown && !dropdown.classList.contains('hidden')) {
+      // If click is outside dropdown AND outside the toggle button
+      if (!dropdown.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+        dropdown.classList.add('hidden');
+      }
     }
   });
-  </script>
+</script>
 </body>
 </html>

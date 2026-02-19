@@ -9,103 +9,154 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="{{ asset('image/logo1.png') }}" type="image/png">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
-<!-- Header dan Navigation Gabungan -->
-<header class="bg-green-800 text-white sticky top-0 z-50 shadow-md">
-  <div class="container mx-auto px-4 py-4">
-
-    <!-- Bagian Atas: Logo + Nama Sekolah + Kontak (desktop) -->
-<div class="flex justify-between items-center">
-  <!-- Kiri: Logo dan Nama -->
-  <div class="flex items-center space-x-4 pl-6 md:pl-12">
-    <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-12 h-12 object-contain">
-    <div>
-      <h1 class="text-2xl font-bold text-white">MA PERGIS GANRA</h1>
-      <p class="text-sm text-green-100">Madrasah Unggul, Berakhlak Mulia</p>
-    </div>
-  </div>
-
-  <!-- Kanan: Kontak + Login (desktop only) -->
-  <div class="hidden md:flex items-center space-x-6 text-sm text-white pr-6 md:pr-12">
-    <span><i class="fas fa-envelope mr-2"></i>mapergis.ganra@gmail.com</span>
-    <span><i class="fas fa-phone mr-2"></i>081 355 280 989</span>
-    <a href="{{ route('login') }}" class="bg-white p-3 rounded-full hover:bg-green-200 transition shadow">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />
-      </svg>
+<!-- Main Header (Logo & Branding) -->
+<header class="bg-green-800 text-white shadow-md border-b border-green-700 sticky top-0 z-40 md:static md:z-auto">
+  <div class="container mx-auto px-4 py-3 md:py-5 flex justify-between items-center">
+    <!-- Logo & Nama Sekolah -->
+    <a href="{{ url('/') }}" class="flex items-center space-x-3 md:space-x-4 hover:opacity-90 transition">
+      <img src="{{ asset('image/logo1.png') }}" alt="Logo MA PERGIS GANRA" class="w-10 h-10 md:w-14 md:h-14 object-contain">
+      <div>
+        <h1 class="text-lg md:text-2xl font-bold tracking-tight leading-tight">MA PERGIS GANRA</h1>
+        <p class="text-xs text-green-100 font-medium tracking-wide hidden md:block">MADRASAH ALIYAH PERGURUAN ISLAM GANRA</p>
+      </div>
     </a>
-  </div>
-</div>
 
+    <!-- Mobile Menu Button -->
+    <button id="menu-toggle" class="md:hidden text-white focus:outline-none p-2 rounded hover:bg-green-700">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
 
-    <!-- Mobile: Menu dan Login -->
-    <div class="md:hidden flex justify-between items-center mt-4">
-      <!-- Tombol Menu -->
-      <button id="menu-toggle">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-      <!-- Tombol Login -->
-      <a href="{{ route('login') }}" class="bg-white p-2 rounded-full hover:bg-green-200 transition shadow">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A7 7 0 0112 15a7 7 0 016.879 2.804M12 12a5 5 0 100-10 5 5 0 000 10z" />
-        </svg>
-      </a>
+    <!-- Desktop Action Button (Dynamic Login/Logout) -->
+    <div class="hidden md:block">
+      @auth
+        <form action="{{ route('logout') }}" method="POST" class="inline">
+          @csrf
+          <button type="submit" class="bg-red-600 hover:bg-red-500 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow hover:shadow-md transition transform hover:-translate-y-0.5 flex items-center">
+            <i class="fas fa-sign-out-alt mr-2 text-lg"></i> Keluar Portal
+          </button>
+        </form>
+      @else
+        <a href="{{ route('login') }}" class="bg-yellow-500 hover:bg-yellow-400 text-green-900 px-6 py-2.5 rounded-full font-bold text-sm shadow hover:shadow-md transition transform hover:-translate-y-0.5 flex items-center">
+          <i class="fas fa-user-circle mr-2 text-lg"></i> Login Portal
+        </a>
+      @endauth
     </div>
-
   </div>
 </header>
 
-<!-- Navigation -->
-<nav class="bg-white text-gray-800 md:pl-12">
-  <div class="container mx-auto px-10">
-    <ul class="hidden md:flex space-x-4 py-3 text-sm font-medium items-center">
-      <li><a href="{{ url('/') }}" class="hover:text-green-600">Home</a></li>
-
+<!-- Navigation Bar (Sticky on Desktop) -->
+<nav class="bg-green-800 text-white shadow-lg sticky top-0 z-50 hidden md:block border-t border-green-700">
+  <div class="container mx-auto px-4">
+    <ul class="flex justify-center space-x-1 lg:space-x-2 text-sm font-semibold tracking-wide">
+      <li><a href="{{ url('/') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400 {{ request()->is('/') ? 'bg-green-700 border-yellow-400' : '' }}">BERANDA</a></li>
+      
       <!-- Dropdown Profil -->
       <li class="relative">
-        <button onclick="toggleDropdown()" class="hover:text-green-600 text-sm font-medium">Profil</button>
-        <ul id="dropdown-profil" class="absolute left-0 top-full mt-3 bg-white border border-gray-200 shadow-lg rounded-md hidden min-w-[160px] z-50">
-          <li><a href="{{ url('/profil/visi-misi') }}" class="block px-4 py-2 hover:bg-green-100  whitespace-nowrap">Visi & Misi</a></li>
-          <li><a href="{{ url('/profil/sejarah') }}" class="block px-4 py-2 hover:bg-green-100  whitespace-nowrap">Sejarah</a></li>
-          <li><a href="{{ url('/profil/identitas') }}" class="block px-4 py-2 hover:bg-green-100">Identitas</a></li>
-          <li><a href="{{ url('/profil/murid') }}" class="block px-4 py-2 hover:bg-green-100">Siswa</a></li>
-          <li><a href="{{ url('/profil/guru') }}" class="block px-4 py-2 hover:bg-green-100">Guru</a></li>
-        </ul>
+        <button onclick="toggleDropdown()" class="flex items-center px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400 focus:outline-none">
+          PROFIL <i class="fas fa-chevron-down ml-1.5 text-xs text-green-200"></i>
+        </button>
+        <div id="dropdown-profil" class="absolute left-0 top-full w-56 bg-white text-gray-800 shadow-xl rounded-b-lg overflow-hidden hidden border-t-2 border-yellow-500 transform origin-top transition-transform duration-200 z-50">
+          <a href="{{ url('/profil/visi-misi') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Visi & Misi</a>
+          <a href="{{ url('/profil/sejarah') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Sejarah Singkat</a>
+          <a href="{{ url('/profil/identitas') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Identitas Madrasah</a>
+          <a href="{{ url('/profil/murid') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 border-b border-gray-50 transition">Data Siswa</a>
+          <a href="{{ url('/profil/guru') }}" class="block px-5 py-3 hover:bg-green-50 hover:text-green-700 transition">Dewan Guru</a>
+        </div>
       </li>
 
-      <li><a href="{{ url('/layanan') }}" class="hover:text-green-600">Layanan</a></li>
-      <li><a href="{{ url('/mainberita') }}" class="hover:text-green-600">Berita</a></li>
-      <li><a href="{{ url('/maingaleri') }}" class="hover:text-green-600">Galeri</a></li>
-      <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-green-600">Hubungi Kami</a></li>
-    </ul>
-
-    <!-- Mobile Navigation -->
-    <ul id="mobile-nav" class="md:hidden hidden flex-col py-4 space-y-2 text-sm font-medium">
-      <li><a href="{{ url('/') }}" class="hover:text-green-600">Home</a></li>
-      <li>
-        <details class="group">
-          <summary class="cursor-pointer hover:text-green-600">Profil</summary>
-          <ul class="ml-4 mt-1 space-y-1">
-            <li><a href="{{ url('/profil/visi-misi') }}" class="block hover:text-green-600">Visi & Misi</a></li>
-            <li><a href="{{ url('/profil/sejarah') }}" class="block hover:text-green-600">Sejarah</a></li>
-            <li><a href="{{ url('/profil/identitas') }}" class="block hover:text-green-600">Identitas</a></li>
-            <li><a href="{{ url('/profil/murid') }}" class="block hover:text-green-600">Siswa</a></li>
-            <li><a href="{{ url('/profil/guru') }}" class="block hover:text-green-600">Guru</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a href="{{ url('/layanan') }}" class="hover:text-green-600">Layanan</a></li>
-      <li><a href="{{ url('/maingaleri') }}" class="hover:text-green-600">Galeri</a></li>
-      <li><a href="{{ url('/hubungi-kami') }}" class="hover:text-green-600">Hubungi Kami</a></li>
+      <li><a href="{{ url('/layanan') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">LAYANAN</a></li>
+      <li><a href="{{ url('/mainberita') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">BERITA</a></li>
+      <li><a href="{{ url('/maingaleri') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">GALERI KEGIATAN</a></li>
+      <li><a href="{{ url('/hubungi-kami') }}" class="block px-4 py-4 hover:bg-green-700 transition border-b-4 border-transparent hover:border-yellow-400">HUBUNGI KAMI</a></li>
     </ul>
   </div>
 </nav>
-</header>
+
+<!-- Mobile Navigation (Hidden by default) -->
+<nav id="mobile-nav" class="fixed inset-0 z-50 bg-green-900 bg-opacity-95 filter backdrop-blur-md text-white transform translate-x-full transition-transform duration-500 md:hidden flex flex-col pt-24 px-6 overflow-y-auto">
+  <!-- Close Button -->
+  <button id="close-menu" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-full bg-white bg-opacity-10 text-white hover:bg-yellow-500 hover:text-green-900 transition-all border border-white border-opacity-10">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  
+  <!-- Mobile Logo Header -->
+  <div class="flex items-center space-x-4 mb-10 pb-8 border-b border-white border-opacity-5">
+    <img src="{{ asset('image/logo1.png') }}" alt="Logo" class="w-16 h-16 object-contain">
+    <div>
+      <h3 class="font-black text-xl leading-tight">MA PERGIS<br><span class="text-yellow-400">GANRA</span></h3>
+    </div>
+  </div>
+  
+  <div class="flex flex-col space-y-1">
+    <a href="{{ url('/') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>BERANDA</span>
+      <i class="fas fa-home text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    
+    <!-- Profil Submenu Container -->
+    <div class="w-full">
+      <button onclick="document.getElementById('mobile-submenu').classList.toggle('hidden'); this.querySelector('.fa-chevron-right').classList.toggle('rotate-90')" 
+              class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors w-full focus:outline-none">
+        <span>PROFIL MADRASAH</span>
+        <i class="fas fa-chevron-right text-xs opacity-30 group-hover:opacity-100 transition-all"></i>
+      </button>
+      <div id="mobile-submenu" class="hidden flex flex-col space-y-0.5 bg-green-950/50 rounded-xl mt-2 overflow-hidden border border-white border-opacity-5">
+        <a href="{{ url('/profil/visi-misi') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Visi & Misi</a>
+        <a href="{{ url('/profil/sejarah') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Sejarah Singkat</a>
+        <a href="{{ url('/profil/identitas') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Identitas & Struktur</a>
+        <a href="{{ url('/profil/murid') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors border-b border-white border-opacity-5">Informasi Siswa</a>
+        <a href="{{ url('/profil/guru') }}" class="px-6 py-3 text-base font-medium text-green-100 hover:bg-green-800 transition-colors">Tenaga Pendidik</a>
+      </div>
+    </div>
+
+    <a href="{{ url('/layanan') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>LAYANAN</span>
+      <i class="fas fa-hands-holding-child text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    <a href="{{ url('/mainberita') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>BERITA TERBARU</span>
+      <i class="fas fa-newspaper text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    <a href="{{ url('/maingaleri') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>GALERI KEGIATAN</span>
+      <i class="fas fa-images text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+    <a href="{{ url('/hubungi-kami') }}" class="group flex items-center justify-between py-3.5 text-lg font-bold border-b border-white border-opacity-5 hover:text-yellow-400 transition-colors">
+      <span>HUBUNGI KAMI</span>
+      <i class="fas fa-headset text-xs opacity-30 group-hover:opacity-100 transition-opacity"></i>
+    </a>
+  </div>
+
+  <!-- Mobile Action (Auth) -->
+  <div class="mt-8 mb-20">
+    @auth
+      <div class="bg-white bg-opacity-5 p-5 rounded-2xl border border-white border-opacity-10 mb-4">
+        <p class="text-[9px] text-green-400 uppercase font-black tracking-widest mb-1">Status Login</p>
+        <p class="text-base font-bold truncate">{{ Auth::user()->name }}</p>
+      </div>
+      <form action="{{ route('logout') }}" method="POST" class="block">
+        @csrf
+        <button type="submit" class="w-full bg-red-600 text-white px-8 py-4 rounded-2xl font-black text-base shadow-xl hover:bg-red-500 transition-all flex items-center justify-center space-x-3">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>KELUAR PORTAL</span>
+        </button>
+      </form>
+    @else
+      <a href="{{ route('login') }}" class="w-full bg-yellow-500 text-green-950 px-8 py-4 rounded-2xl font-black text-base shadow-xl hover:bg-yellow-400 transition-all flex items-center justify-center space-x-3">
+        <i class="fas fa-user-circle"></i>
+        <span>LOGIN PORTAL</span>
+      </a>
+    @endauth
+  </div>
+</nav>
 <!-- Hero -->
 <div class="relative w-full">
   <img src="/image/backround.jpg" alt="Hero Banner" 
@@ -126,65 +177,89 @@
 
 
   <!-- Quote -->
-  <section class="bg-yellow-500 text-white text-center py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition duration-500 ease-in-out">
-  <p class="text-lg font-semibold italic opacity-90 hover:opacity-100 transition-opacity duration-300">
-    "Hiduplah seakan-akan kau akan mati besok. Belajarlah seakan-akan kau akan hidup selamanya." - Anonim
-  </p>
+
 </section>
 
 <!-- Main Content -->
 <main class="container mx-auto px-4 py-16 space-y-20">
 
 <!-- KEGIATAN SEKOLAH -->
-<section class="bg-gradient-to-brrelative bg-gradient-to-b from-green-50 to-gray-100 rounded-3xl shadow-xl p-10 overflow-x-hidden">
-  <h2 class="text-4xl font-extrabold text-center text-black mb-14 tracking-wide" data-aos="zoom-in">
-    KEGIATAN SEKOLAH
-  </h2>
-
-  <div class="space-y-20">
-    @forelse ($galeris as $galeri)
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-
-        @if($loop->iteration % 2 == 1)
-          <!-- Gambar di kiri -->
-          <div data-aos="fade-right" class="relative group overflow-hidden">
-            <img src="{{ asset('storage/' . $galeri->gambar) }}" 
-                 alt="{{ $galeri->judul }}" 
-                 class="w-full h-80 object-cover rounded-2xl shadow-lg transform transition duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-black bg-opacity-20 rounded-2xl opacity-0 group-hover:opacity-100 transition"></div>
-          </div>
-          <!-- Teks di kanan -->
-          <div data-aos="fade-left" class="space-y-4">
-            <h3 class="text-2xl font-bold text-green-800">{{ $galeri->judul }}</h3>
-            @if($galeri->deskripsi)
-              <p class="text-gray-700 text-lg leading-relaxed">
-                {{ $galeri->deskripsi }}
-              </p>
-            @endif
-          </div>
-        @else
-          <!-- Teks di kiri -->
-          <div class="order-2 md:order-1 space-y-4" data-aos="fade-right">
-            <h3 class="text-2xl font-bold text-green-800">{{ $galeri->judul }}</h3>
-            @if($galeri->deskripsi)
-              <p class="text-gray-700 text-lg leading-relaxed">
-                {{ $galeri->deskripsi }}
-              </p>
-            @endif
-          </div>
-          <!-- Gambar di kanan -->
-          <div class="order-1 md:order-2 relative group overflow-hidden" data-aos="fade-left">
-            <img src="{{ asset('storage/' . $galeri->gambar) }}" 
-                 alt="{{ $galeri->judul }}" 
-                 class="w-full h-80 object-cover rounded-2xl shadow-lg transform transition duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-black bg-opacity-20 rounded-2xl opacity-0 group-hover:opacity-100 transition"></div>
-          </div>
-        @endif
-
+<section class="py-24 bg-white overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-20" data-aos="fade-up">
+      <div class="inline-block px-4 py-1.5 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase tracking-widest mb-4">
+        Info Aktivitas
       </div>
-    @empty
-      <p class="text-gray-600 text-center text-lg">Belum ada kegiatan yang ditampilkan.</p>
-    @endforelse
+      <h2 class="text-4xl md:text-5xl font-extrabold text-green-900 mb-4 tracking-tight">
+        Kegiatan Sekolah
+      </h2>
+      <div class="w-24 h-1.5 bg-yellow-500 mx-auto rounded-full"></div>
+      <p class="mt-6 text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+        Dokumentasi aktivitas rutin dan spesial di lingkungan MA Pergis Ganra untuk mewujudkan generasi yang unggul.
+      </p>
+    </div>
+
+    <div class="space-y-32">
+      @forelse ($galeris as $galeri)
+        <div class="group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Image Column -->
+          <div class="lg:col-span-7 {{ $loop->iteration % 2 == 0 ? 'lg:order-2' : '' }}" data-aos="{{ $loop->iteration % 2 == 0 ? 'fade-left' : 'fade-right' }}">
+            <div class="relative">
+              <!-- Decorative background element -->
+              <div class="absolute -inset-4 bg-green-50 rounded-3xl -z-10 transform {{ $loop->iteration % 2 == 0 ? 'rotate-2' : '-rotate-2' }} transition-transform group-hover:rotate-0 duration-500"></div>
+              
+              <div class="overflow-hidden rounded-2xl shadow-2xl relative">
+                <img src="{{ asset('storage/' . $galeri->gambar) }}" 
+                     alt="{{ $galeri->judul }}" 
+                     class="w-full h-80 md:h-[450px] object-cover transform transition duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Column -->
+          <div class="lg:col-span-5 {{ $loop->iteration % 2 == 0 ? 'lg:order-1 lg:text-right' : '' }}" data-aos="{{ $loop->iteration % 2 == 0 ? 'fade-right' : 'fade-left' }}">
+            <div class="space-y-6">
+              <div class="flex items-center space-x-2 text-yellow-600 {{ $loop->iteration % 2 == 0 ? 'lg:justify-end' : '' }}">
+                <i class="fas fa-star text-sm"></i>
+                <span class="text-sm font-bold uppercase tracking-widest">Unggulan</span>
+              </div>
+              <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                {{ $galeri->judul }}
+              </h3>
+              @if($galeri->deskripsi)
+                <p class="text-gray-600 text-lg leading-relaxed lg:pl-4 {{ $loop->iteration % 2 == 0 ? 'lg:pl-0 lg:pr-4' : '' }}">
+                  {{ $galeri->deskripsi }}
+                </p>
+              @endif
+              <div class="pt-4 flex {{ $loop->iteration % 2 == 0 ? 'lg:justify-end' : '' }}">
+                <a href="{{ url('/maingaleri') }}" class="inline-flex items-center px-6 py-3 bg-green-800 text-white rounded-xl font-bold hover:bg-green-700 transition-all shadow-lg hover:shadow-green-900/20 group/link">
+                  Detail Kegiatan
+                  <i class="fas fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      @empty
+        <div class="text-center py-20 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200" data-aos="fade-up">
+           <i class="fas fa-images text-5xl text-gray-300 mb-4 block"></i>
+           <p class="text-gray-500 text-xl font-medium">Belum ada kegiatan yang ditampilkan saat ini.</p>
+        </div>
+      @endforelse
+    </div>
+
+    <!-- View All Button -->
+    @if(count($galeris) > 0)
+      <div class="mt-32 text-center" data-aos="fade-up">
+        <a href="{{ url('/maingaleri') }}" 
+           class="inline-flex items-center justify-center px-12 py-5 bg-yellow-500 text-green-900 font-extrabold rounded-full shadow-xl hover:bg-yellow-400 hover:shadow-2xl transition-all transform hover:-translate-y-1">
+          <i class="fas fa-th-large mr-3"></i> LIHAT SEMUA KEGIATAN
+        </a>
+      </div>
+    @endif
   </div>
 </section>
 
@@ -304,40 +379,37 @@
   <script>
     AOS.init();
 
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('mobile-nav');
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('hidden');
-    });
+    const menuBtn = document.getElementById('menu-toggle');
+    const closeBtn = document.getElementById('close-menu');
+    const mobileNav = document.getElementById('mobile-nav');
 
+    function toggleMenu() {
+      mobileNav.classList.toggle('translate-x-full');
+      document.body.classList.toggle('overflow-hidden');
+    }
+
+    if(menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    if(closeBtn) closeBtn.addEventListener('click', toggleMenu);
+
+    // Desktop Dropdown Logic
     function toggleDropdown() {
       const dropdown = document.getElementById('dropdown-profil');
       dropdown.classList.toggle('hidden');
     }
 
-    document.addEventListener('click', function (e) {
-      const btn = e.target.closest('button');
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
       const dropdown = document.getElementById('dropdown-profil');
-      if (!e.target.closest('li') || (btn && !btn.onclick)) {
-        if (!e.target.closest('#dropdown-profil')) {
-          dropdown?.classList?.add('hidden');
+      const toggleBtn = document.querySelector('button[onclick="toggleDropdown()"]');
+      
+      // Check if dropdown is open
+      if (dropdown && !dropdown.classList.contains('hidden')) {
+        // If click is outside dropdown AND outside the toggle button
+        if (!dropdown.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+          dropdown.classList.add('hidden');
         }
       }
     });
-
-    function toggleDropdown() {
-    const dropdown = document.getElementById('dropdown-profil');
-    dropdown.classList.toggle('hidden');
-  }
-
-  // Optional: klik di luar dropdown untuk menutup
-  window.addEventListener('click', function(e) {
-    const dropdown = document.getElementById('dropdown-profil');
-    const button = document.querySelector('button[onclick="toggleDropdown()"]');
-    if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.add('hidden');
-    }
-  });
   </script>
 </body>
 </html>
