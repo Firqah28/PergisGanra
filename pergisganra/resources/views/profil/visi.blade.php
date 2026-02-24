@@ -3,11 +3,9 @@
 @section('title', 'Visi dan Misi')
 
 @section('content')
-<!-- Wrapper -->
-@section('content')
 <main class="bg-gray-50 min-h-screen">
     <!-- Hero Header -->
-    <div class="relative bg-green-800 py-24 overflow-hidden">
+    <div class="relative bg-green-800 py-12 md:py-24 overflow-hidden">
         <!-- Decorative background -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full blur-3xl -mr-48 -mt-48"></div>
@@ -15,10 +13,10 @@
         </div>
         
         <div class="container mx-auto px-4 relative z-10 text-center" data-aos="fade-up">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+            <h1 class="text-3xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 Visi & <span class="text-yellow-400">Misi</span>
             </h1>
-            <p class="text-green-100 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-medium">
+            <p class="text-green-100 text-base md:text-xl max-w-3xl mx-auto leading-relaxed font-medium px-4">
                 Dua pilar utama yang mendasari setiap langkah dan kebijakan di MA Pergis Ganra untuk mencetak generasi yang cerdas secara spritual dan intelektual.
             </p>
         </div>
@@ -32,17 +30,17 @@
                 
                 <!-- Left Column: The Vision (Large Card) -->
                 <div class="lg:col-span-12 xl:col-span-5" data-aos="fade-right">
-                    <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 border-b-8 border-yellow-500 relative overflow-hidden group">
+                    <div class="bg-white rounded-3xl shadow-xl p-6 md:p-12 border-b-8 border-yellow-500 relative overflow-hidden group">
                         <div class="absolute top-0 right-0 p-8 opacity-5">
                             <i class="fas fa-eye text-9xl text-green-900"></i>
                         </div>
-                        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 text-green-800 rounded-2xl mb-8">
-                            <i class="fas fa-eye text-2xl"></i>
+                        <div class="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-green-100 text-green-800 rounded-2xl mb-8">
+                            <i class="fas fa-eye text-xl md:text-2xl"></i>
                         </div>
-                        <h2 class="text-3xl font-extrabold text-green-900 mb-6">Visi Madrasah</h2>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-green-900 mb-6">Visi Madrasah</h2>
                         <div class="relative">
-                            <span class="text-6xl text-green-100 absolute -top-8 -left-4 font-serif">"</span>
-                            <p class="text-2xl md:text-3xl font-bold text-gray-800 leading-tight italic relative z-10">
+                            <span class="text-4xl md:text-6xl text-green-100 absolute -top-6 md:-top-8 -left-2 md:-left-4 font-serif">"</span>
+                            <p class="text-lg md:text-3xl font-bold text-gray-800 leading-tight italic relative z-10">
                                 Terwujudnya kondisi kehidupan kemasyarakatan yang baik, maju, dan berakhlakul karimah sebagai hasil proses pendidikan dan dakwah yang bernafaskan Islam.
                             </p>
                         </div>
@@ -51,36 +49,36 @@
 
                 <!-- Right Column: The Mission (List Card) -->
                 <div class="lg:col-span-12 xl:col-span-7" data-aos="fade-left">
-                    <div class="bg-green-900 rounded-3xl shadow-xl p-8 md:p-12 text-white relative h-full">
+                    <div class="bg-green-900 rounded-3xl shadow-xl p-6 md:p-12 text-white relative h-full">
                         <div class="flex items-center space-x-4 mb-10">
-                            <div class="w-16 h-16 bg-yellow-500 text-green-900 rounded-2xl flex items-center justify-center">
-                                <i class="fas fa-bullseye text-2xl"></i>
+                            <div class="w-12 h-12 md:w-16 md:h-16 bg-yellow-500 text-green-900 rounded-2xl flex items-center justify-center">
+                                <i class="fas fa-bullseye text-xl md:text-2xl"></i>
                             </div>
-                            <h2 class="text-3xl font-extrabold tracking-tight">Misi Strategis</h2>
+                            <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Misi Strategis</h2>
                         </div>
                         
-                        <div class="space-y-10">
+                        <div class="space-y-8 md:space-y-10">
                             <!-- Misi 1 -->
-                            <div class="flex items-start space-x-6 group">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-800 border-2 border-yellow-500/50 flex items-center justify-center font-bold text-yellow-400 group-hover:bg-yellow-500 group-hover:text-green-900 transition-colors duration-300">
+                            <div class="flex items-start space-x-4 md:space-x-6 group">
+                                <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-green-800 border-2 border-yellow-500/50 flex items-center justify-center font-bold text-yellow-400 group-hover:bg-yellow-500 group-hover:text-green-900 transition-colors duration-300 text-sm md:text-base">
                                     1
                                 </div>
-                                <div class="space-y-2">
-                                    <h4 class="text-xl font-bold text-yellow-400 tracking-wide uppercase text-xs">Pendidikan Holistik</h4>
-                                    <p class="text-lg text-green-50 leading-relaxed font-medium">
+                                <div class="space-y-1">
+                                    <h4 class="text-yellow-400 tracking-wide uppercase text-[10px] md:text-xs font-black">Pendidikan Holistik</h4>
+                                    <p class="text-base md:text-lg text-green-50 leading-relaxed font-medium">
                                         Menyelenggarakan pendidikan IPTEK dan IMTAQ yang berdimensi keduniaan dan keakhiratan secara efektif, sistematis, dan terencana.
                                     </p>
                                 </div>
                             </div>
 
                             <!-- Misi 2 -->
-                            <div class="flex items-start space-x-6 group">
-                                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-green-800 border-2 border-yellow-500/50 flex items-center justify-center font-bold text-yellow-400 group-hover:bg-yellow-500 group-hover:text-green-900 transition-colors duration-300">
+                            <div class="flex items-start space-x-4 md:space-x-6 group">
+                                <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-full bg-green-800 border-2 border-yellow-500/50 flex items-center justify-center font-bold text-yellow-400 group-hover:bg-yellow-500 group-hover:text-green-900 transition-colors duration-300 text-sm md:text-base">
                                     2
                                 </div>
-                                <div class="space-y-2">
-                                    <h4 class="text-xl font-bold text-yellow-400 tracking-wide uppercase text-xs">Kualitas & Keadilan</h4>
-                                    <p class="text-lg text-green-50 leading-relaxed font-medium">
+                                <div class="space-y-1">
+                                    <h4 class="text-yellow-400 tracking-wide uppercase text-[10px] md:text-xs font-black">Kualitas & Keadilan</h4>
+                                    <p class="text-base md:text-lg text-green-50 leading-relaxed font-medium">
                                         Menyelenggarakan pendidikan yang bermutu, adil, dan merata di lingkungan sekolah untuk seluruh elemen masyarakat.
                                     </p>
                                 </div>

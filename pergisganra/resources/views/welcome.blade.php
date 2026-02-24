@@ -184,22 +184,22 @@
 <main class="container mx-auto px-4 py-16 space-y-20">
 
 <!-- KEGIATAN SEKOLAH -->
-<section class="py-24 bg-white overflow-hidden">
+<section class="py-12 md:py-24 bg-white overflow-hidden">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-20" data-aos="fade-up">
-      <div class="inline-block px-4 py-1.5 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase tracking-widest mb-4">
+    <div class="text-center mb-12 md:mb-20" data-aos="fade-up">
+      <div class="inline-block px-4 py-1.5 bg-green-100 text-green-800 text-[10px] md:text-xs font-bold rounded-full uppercase tracking-widest mb-4">
         Info Aktivitas
       </div>
-      <h2 class="text-4xl md:text-5xl font-extrabold text-green-900 mb-4 tracking-tight">
+      <h2 class="text-2xl md:text-5xl font-extrabold text-green-900 mb-4 tracking-tight">
         Kegiatan Sekolah
       </h2>
-      <div class="w-24 h-1.5 bg-yellow-500 mx-auto rounded-full"></div>
-      <p class="mt-6 text-gray-600 text-lg max-w-2xl mx-auto font-medium">
+      <div class="w-16 md:w-24 h-1.5 bg-yellow-500 mx-auto rounded-full"></div>
+      <p class="mt-6 text-gray-600 text-base md:text-lg max-w-2xl mx-auto font-medium px-4">
         Dokumentasi aktivitas rutin dan spesial di lingkungan MA Pergis Ganra untuk mewujudkan generasi yang unggul.
       </p>
     </div>
 
-    <div class="space-y-32">
+    <div class="space-y-16 md:space-y-32">
       @forelse ($galeris as $galeri)
         <div class="group grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           

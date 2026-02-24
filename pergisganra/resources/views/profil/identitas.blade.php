@@ -5,22 +5,22 @@
 @section('content')
 <main class="bg-gray-50 min-h-screen">
     <!-- Hero Header -->
-    <div class="relative bg-green-800 py-24 overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
+    <div class="relative bg-green-800 py-12 md:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 drop-shadow-sm">
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-yellow-500 rounded-full blur-3xl"></div>
             <div class="absolute bottom-0 left-1/4 w-64 h-64 bg-white rounded-full blur-3xl"></div>
         </div>
         
         <div class="container mx-auto px-4 relative z-10 text-center" data-aos="fade-down">
             <div class="flex justify-center mb-6">
-                <div class="bg-white/10 p-4 rounded-full backdrop-blur-md border border-white/20 shadow-2xl">
-                    <img src="{{ asset('image/logo1.png') }}" alt="Logo MA Pergis Ganra" class="h-20 w-20 object-contain drop-shadow-lg">
+                <div class="bg-white/10 p-3 md:p-4 rounded-full backdrop-blur-md border border-white/20 shadow-2xl">
+                    <img src="{{ asset('image/logo1.png') }}" alt="Logo MA Pergis Ganra" class="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-lg">
                 </div>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
+            <h1 class="text-3xl md:text-6xl font-extrabold text-white mb-6 tracking-tight px-4">
                 Identitas <span class="text-yellow-400">Madrasah</span>
             </h1>
-            <p class="text-green-100 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-medium">
+            <p class="text-green-100 text-base md:text-xl max-w-3xl mx-auto leading-relaxed font-medium px-4">
                 Profil lengkap jati diri, visi, dan misi MA Pergis Ganra sebagai lembaga pendidikan Islam yang berkomitmen pada mutu, prestasi, dan karakter.
             </p>
         </div>
@@ -43,18 +43,18 @@
             <div class="max-w-6xl mx-auto flex flex-col items-center space-y-16">
                 <!-- Kepala Sekolah -->
                 <div onclick="openModal('kepsek')" 
-                     class="cursor-pointer bg-white shadow-xl rounded-3xl p-10 text-center border border-green-50 hover:shadow-2xl 
+                     class="cursor-pointer bg-white shadow-xl rounded-3xl p-8 md:p-10 text-center border border-green-50 hover:shadow-2xl 
                             transition transform hover:-translate-y-2 group"
                      data-aos="fade-up">
-                    <div class="relative mx-auto w-32 h-32">
+                    <div class="relative mx-auto w-28 h-28 md:w-32 md:h-32">
                         <img src="{{ asset('image/kepsek.jpg') }}" alt="Kepala Madrasah" 
-                             class="w-32 h-32 rounded-full object-cover border-4 border-green-100 shadow-md group-hover:border-green-500 transition-colors">
-                        <div class="absolute bottom-0 right-0 bg-yellow-500 text-green-900 w-10 h-10 rounded-full shadow-lg flex items-center justify-center border-2 border-white">
-                            <i class="fas fa-user-tie text-sm"></i>
+                             class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border-4 border-green-100 shadow-md group-hover:border-green-500 transition-colors">
+                        <div class="absolute bottom-0 right-0 bg-yellow-500 text-green-900 w-8 h-8 md:w-10 md:h-10 rounded-full shadow-lg flex items-center justify-center border-2 border-white">
+                            <i class="fas fa-user-tie text-[10px] md:text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mt-6">H. Muh. Asaad, S.Pd.I.</h3>
-                    <p class="text-green-700 font-bold uppercase tracking-wider text-sm mt-1">Kepala Madrasah</p>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mt-6">H. Muh. Asaad, S.Pd.I.</h3>
+                    <p class="text-green-700 font-bold uppercase tracking-wider text-[10px] md:text-sm mt-1">Kepala Madrasah</p>
                 </div>
 
                 <!-- Baris Kedua: Staff - Waka -->
@@ -72,17 +72,17 @@
 
                     @foreach($wakil as $index => $w)
                     <div onclick="openModal('{{ $w['role'] }}')" 
-                         class="cursor-pointer bg-white shadow-lg rounded-3xl p-8 text-center hover:shadow-xl transition transform hover:-translate-y-2 group hover:ring-2 hover:ring-green-500"
+                         class="cursor-pointer bg-white shadow-lg rounded-3xl p-6 md:p-8 text-center hover:shadow-xl transition transform hover:-translate-y-2 group hover:ring-2 hover:ring-green-500"
                          data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}">
-                        <div class="relative mx-auto w-24 h-24">
+                        <div class="relative mx-auto w-20 h-20 md:w-24 md:h-24">
                             <img src="{{ asset('image/' . $w['img']) }}" alt="{{ $w['name'] }}" 
-                                 class="w-24 h-24 rounded-full object-cover border-4 border-gray-100 group-hover:border-green-200 shadow-sm transition-colors">
-                            <div class="absolute -bottom-2 -right-2 bg-green-800 text-white w-8 h-8 rounded-full shadow-md flex items-center justify-center">
-                                <i class="fas fa-{{ $w['icon'] }} text-[10px]"></i>
+                                 class="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-4 border-gray-100 group-hover:border-green-200 shadow-sm transition-colors">
+                            <div class="absolute -bottom-1 -right-1 md:-bottom-2 md:-right-2 bg-green-800 text-white w-7 h-7 md:w-8 md:h-8 rounded-full shadow-md flex items-center justify-center">
+                                <i class="fas fa-{{ $w['icon'] }} text-[9px] md:text-[10px]"></i>
                             </div>
                         </div>
-                        <h4 class="text-lg font-bold text-gray-900 mt-6">{{ $w['name'] }}</h4>
-                        <p class="text-green-700 font-semibold text-xs uppercase tracking-widest mt-1">{{ $w['pos'] }}</p>
+                        <h4 class="text-base md:text-lg font-bold text-gray-900 mt-6">{{ $w['name'] }}</h4>
+                        <p class="text-green-700 font-semibold text-[10px] uppercase tracking-widest mt-1">{{ $w['pos'] }}</p>
                     </div>
                     @endforeach
                 </div>
@@ -144,22 +144,22 @@
                     @endphp
 
                     @foreach($identityData as $index => $data)
-                        <div class="group bg-white rounded-2xl p-6 flex items-center gap-5 border border-green-100 shadow-sm hover:shadow-xl hover:border-green-400 hover:-translate-y-1 transition-all duration-300" 
+                        <div class="group bg-white rounded-2xl p-5 md:p-6 flex items-center gap-4 md:gap-5 border border-green-100 shadow-sm hover:shadow-xl hover:border-green-400 hover:-translate-y-1 transition-all duration-300" 
                              data-aos="fade-up" data-aos-delay="{{ 50 * $index }}">
-                            <div class="w-14 h-14 bg-green-50 rounded-2xl shadow-inner flex items-center justify-center border border-green-100 group-hover:bg-green-800 transition-colors duration-500 overflow-hidden relative">
+                            <div class="w-12 h-12 md:w-14 md:h-14 bg-green-50 rounded-2xl shadow-inner flex items-center justify-center border border-green-100 group-hover:bg-green-800 transition-colors duration-500 overflow-hidden relative flex-shrink-0">
                                 <!-- Decoration inside icon box -->
                                 <div class="absolute -right-2 -bottom-2 w-8 h-8 bg-yellow-400/20 rounded-full blur-sm group-hover:bg-yellow-400/40 transition-all"></div>
-                                <i class="fas fa-{{ $data['icon'] }} {{ $data['iconColor'] }} text-xl group-hover:text-white group-hover:scale-110 transition-all duration-500"></i>
+                                <i class="fas fa-{{ $data['icon'] }} {{ $data['iconColor'] }} text-lg group-hover:text-white group-hover:scale-110 transition-all duration-500"></i>
                             </div>
                             <div>
-                                <p class="text-[10px] font-black text-green-600/60 uppercase tracking-[0.2em] mb-1 group-hover:text-yellow-600 transition-colors">{{ $data['label'] }}</p>
-                                <h3 class="text-lg font-bold text-gray-900 leading-tight tracking-tight">{{ $data['value'] }}</h3>
+                                <p class="text-[9px] md:text-[10px] font-black text-green-600/60 uppercase tracking-[0.2em] mb-1 group-hover:text-yellow-600 transition-colors">{{ $data['label'] }}</p>
+                                <h3 class="text-base md:text-lg font-bold text-gray-900 leading-tight tracking-tight">{{ $data['value'] }}</h3>
                             </div>
                         </div>
                     @endforeach
 
                     <!-- Full width address -->
-                    <div class="md:col-span-2 bg-green-900 rounded-[2rem] p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-8 shadow-2xl mt-6 relative overflow-hidden group border-b-8 border-yellow-500" data-aos="zoom-in">
+                    <div class="md:col-span-2 bg-green-900 rounded-[2rem] p-6 md:p-12 text-white flex flex-col md:flex-row items-center gap-8 shadow-2xl mt-6 relative overflow-hidden group border-b-8 border-yellow-500" data-aos="zoom-in">
                         <!-- Background glow effect -->
                         <div class="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-yellow-500/20 transition-all duration-700"></div>
                         <div class="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -ml-32 -mb-32"></div>
@@ -181,22 +181,22 @@
 
     <!-- Modal System -->
     <div id="modal" class="fixed inset-0 bg-green-950/80 backdrop-blur-sm justify-center items-center z-50 hidden p-4 overflow-y-auto">
-        <div class="bg-white rounded-[2.5rem] shadow-2xl max-w-lg w-full p-8 md:p-12 animate-fade-in relative">
-            <button onclick="closeModal()" class="absolute top-6 right-6 w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-red-500 hover:text-white transition-all text-2xl group shadow-sm">
+        <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] shadow-2xl max-w-lg w-full p-6 md:p-12 animate-fade-in relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 w-10 h-10 md:w-12 md:h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-red-500 hover:text-white transition-all text-xl md:text-2xl group shadow-sm">
                 <i class="fas fa-times"></i>
             </button>
 
             <div class="text-center">
-                <div class="relative w-32 h-32 mx-auto mb-8">
+                <div class="relative w-28 h-28 md:w-32 md:h-32 mx-auto mb-6 md:mb-8">
                     <div class="absolute inset-0 bg-green-100 rounded-full animate-ping opacity-20"></div>
-                    <img id="modalImg" src="" alt="Foto" class="w-32 h-32 relative z-10 rounded-full border-4 border-white shadow-xl object-cover">
+                    <img id="modalImg" src="" alt="Foto" class="w-28 h-28 md:w-32 md:h-32 relative z-10 rounded-full border-4 border-white shadow-xl object-cover">
                 </div>
-                <h2 id="modalTitle" class="text-3xl font-extrabold text-green-900 mb-2 tracking-tight line-clamp-1"></h2>
-                <p id="modalSubtitle" class="text-yellow-600 font-bold uppercase tracking-widest text-xs mb-8"></p>
-                <div class="bg-green-50 p-6 rounded-2xl">
-                    <p id="modalContent" class="text-gray-700 leading-relaxed font-medium"></p>
+                <h2 id="modalTitle" class="text-2xl md:text-3xl font-extrabold text-green-900 mb-2 tracking-tight line-clamp-1"></h2>
+                <p id="modalSubtitle" class="text-yellow-600 font-bold uppercase tracking-widest text-[10px] md:text-xs mb-6 md:mb-8"></p>
+                <div class="bg-green-50 p-5 md:p-6 rounded-2xl">
+                    <p id="modalContent" class="text-sm md:text-gray-700 leading-relaxed font-medium"></p>
                 </div>
-                <button onclick="closeModal()" class="mt-8 w-full py-4 bg-green-800 text-white rounded-2xl font-bold hover:bg-green-700 transition shadow-lg shadow-green-900/10 uppercase tracking-widest text-sm">
+                <button onclick="closeModal()" class="mt-6 md:mt-8 w-full py-4 bg-green-800 text-white rounded-2xl font-bold hover:bg-green-700 transition shadow-lg shadow-green-900/10 uppercase tracking-widest text-xs md:text-sm">
                     Tutup Profil
                 </button>
             </div>
